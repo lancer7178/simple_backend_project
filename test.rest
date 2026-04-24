@@ -1,0 +1,77 @@
+### API Testing File for VS Code REST Client
+### Install "REST Client" extension to use this file
+### Shortcut: Ctrl+Shift+D to send request
+
+@baseUrl = http://localhost:3000/api
+
+### ==========================================
+### GET REQUESTS
+### ==========================================
+
+### Get all items
+GET {{baseUrl}}/items
+
+### Get item by ID (change 1 to any ID)
+GET {{baseUrl}}/items/1
+
+### Get non-existent item (should return 404)
+GET {{baseUrl}}/items/999
+
+### ==========================================
+### POST REQUEST - Create new item
+### ==========================================
+
+POST {{baseUrl}}/items
+Content-Type: application/json
+
+{
+  "title": "Learn REST APIs",
+  "description": "Understand how to build REST APIs with Node.js"
+}
+
+### ==========================================
+### PUT REQUEST - Complete update
+### ==========================================
+
+### Replace entire item with ID 1
+PUT {{baseUrl}}/items/1
+Content-Type: application/json
+
+{
+  "title": "Master Node.js",
+  "description": "Become an expert in Node.js backend development",
+  "completed": true
+}
+
+### ==========================================
+### PATCH REQUEST - Partial update
+### ==========================================
+
+### Update only the completed status
+PATCH {{baseUrl}}/items/2
+Content-Type: application/json
+
+{
+  "completed": false
+}
+
+### Update only the title
+PATCH {{baseUrl}}/items/3
+Content-Type: application/json
+
+{
+  "title": "Advanced Concepts"
+}
+
+### ==========================================
+### DELETE REQUEST
+### ==========================================
+
+### Delete item with ID 1
+DELETE {{baseUrl}}/items/1
+
+### ==========================================
+### Test Health Check
+### ==========================================
+
+GET http://localhost:3000
